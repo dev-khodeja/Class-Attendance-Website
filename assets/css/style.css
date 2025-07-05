@@ -1,0 +1,16 @@
+.login-section .card{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+
+
+
+.login-icon a{
+    padding:10px;
+}
+
+.login-icon i{
+    font-size:23px;
+}
