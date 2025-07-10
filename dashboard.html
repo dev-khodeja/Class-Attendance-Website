@@ -5,111 +5,461 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Attendance Website</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
 
-    <!-- Start Header Section -->
-     <header class="dashboard-header">
-        <nav class="navbar  navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="assets/image/national university  logo.png" height="60px" width="50px" alt="logo"><i>National University</i></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <h4 class="fw-bold"><i>Attendance Management System</i></h4>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <p class="fs-6 p-2"> Welcome, David</p>
-                        <img src="assets/image/user.png" height="30px" width="30px" alt="user" class=" border  rounded-circle">
-                    </form>
+
+  
+<div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="navbar bg-body-tertiary fixed-top ">
+                <div class="container-fluid">
+                    <div>
+                        <a class="navbar-brand" href="#"><i><b>National University </b></i></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="text-center mb-4">
+                                <img src="assets/image/user.png" class="rounded-circle" height="100px" width="80px" alt="Teacher Avatar">
+                                <h5 class="mt-2 text-dark" id="teacherName">Prof. John Smith</h5>
+                                <p class="text-muted" id="teacherDept">Computer Science</p>
+                            </div>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
+                                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#attendance" data-bs-toggle="tab">
+                                        <i class="fas fa-clipboard-check me-2"></i>Take Attendance
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#reports" data-bs-toggle="tab">
+                                        <i class="fas fa-chart-bar me-2"></i>Reports
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#settings" data-bs-toggle="tab">
+                                        <i class="fas fa-cog me-2"></i>Settings
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="mt-auto p-3">
+                                <button class="btn btn-danger w-100">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </nav>
+            
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Class Attendance Management System</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group ">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-calendar me-1"></i>Today: <span id="currentDate"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- Dashboard Tab -->
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="card text-white bg-primary mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5 class="card-title">Courses</h5>
+                                                <h2 class="mb-0" id="totalCourses">4</h2>
+                                            </div>
+                                            <i class="fas fa-book fa-3x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card text-white bg-success mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5 class="card-title">Students</h5>
+                                                <h2 class="mb-0" id="totalStudents">120</h2>
+                                            </div>
+                                            <i class="fas fa-users fa-3x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card text-white bg-info mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5 class="card-title">Today's Classes</h5>
+                                                <h2 class="mb-0" id="todaysClasses">2</h2>
+                                            </div>
+                                            <i class="fas fa-calendar-day fa-3x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Today's Schedule</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Course</th>
+                                                        <th>Time</th>
+                                                        <th>Room</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="scheduleTable">
+                                                    <!-- Filled by JavaScript -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Attendance Summary</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="attendanceChart" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Tab -->
+                    <div class="tab-pane fade" id="attendance">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Select Class</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="classSelectionForm">
+                                            <div class="mb-3">
+                                                <label for="courseSelect" class="form-label">Course</label>
+                                                <select class="form-select" id="courseSelect">
+                                                    <option selected disabled>Select a course</option>
+                                                    <!-- Filled by JavaScript -->
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="dateSelect" class="form-label">Date</label>
+                                                <input type="date" class="form-control" id="dateSelect">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Load Students</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5>Class Information</h5>
+                                        <span class="badge bg-primary" id="studentCountBadge">0 students</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Course Code
+                                                <span class="text-muted" id="courseCodeDisplay">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Course Name
+                                                <span class="text-muted" id="courseNameDisplay">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Department
+                                                <span class="text-muted" id="courseDeptDisplay">-</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Class Time
+                                                <span class="text-muted" id="classTimeDisplay">-</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 d-none" id="attendanceCard">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5>Mark Attendance</h5>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-success me-2" id="markAllPresent">
+                                        <i class="fas fa-check-circle me-1"></i>All Present
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" id="markAllAbsent">
+                                        <i class="fas fa-times-circle me-1"></i>All Absent
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="attendanceTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Roll No.</th>
+                                                <th>Student Name</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Filled by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-grid gap-2 mt-3">
+                                    <button class="btn btn-success" id="submitAttendance">
+                                        <i class="fas fa-save me-1"></i>Submit Attendance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reports Tab -->
+                    <div class="tab-pane fade" id="reports">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Generate Report</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="reportForm">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="reportCourse" class="form-label">Course</label>
+                                                    <select class="form-select" id="reportCourse">
+                                                        <option selected disabled>Select a course</option>
+                                                        <!-- Filled by JavaScript -->
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="reportType" class="form-label">Report Type</label>
+                                                    <select class="form-select" id="reportType">
+                                                        <option value="daily">Daily Report</option>
+                                                        <option value="weekly">Weekly Report</option>
+                                                        <option value="monthly">Monthly Report</option>
+                                                        <option value="semester">Semester Report</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="startDate" class="form-label">Start Date</label>
+                                                    <input type="date" class="form-control" id="startDate">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="endDate" class="form-label">End Date</label>
+                                                    <input type="date" class="form-control" id="endDate">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-chart-bar me-1"></i>Generate Report
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Report Summary</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="alert alert-info" id="reportSummaryText">
+                                            Select parameters and generate a report to view summary.
+                                        </div>
+                                        <div class="table-responsive d-none" id="reportSummaryTableContainer">
+                                            <table class="table table-sm" id="reportSummaryTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Metric</th>
+                                                        <th>Value</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Total Classes</td>
+                                                        <td id="totalClasses">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Average Attendance</td>
+                                                        <td id="avgAttendance">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Attendance</td>
+                                                        <td id="highestAttendance">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lowest Attendance</td>
+                                                        <td id="lowestAttendance">-</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 d-none" id="reportResultsCard">
+                            <div class="card-header">
+                                <h5>Report Results</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <canvas id="detailedReportChart" height="300"></canvas>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="table-responsive">
+                                            <table class="table table-sm" id="detailedReportTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Present</th>
+                                                        <th>Absent</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Filled by JavaScript -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-end">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-download me-1"></i>Download Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="tab-pane fade" id="settings">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Teacher Profile</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="teacherProfileForm">
+                                            <div class="mb-3">
+                                                <label for="teacherFullName" class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" id="teacherFullName" value="John Smith">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="teacherEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="teacherEmail" value="john.smith@university.edu">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="teacherPhone" class="form-label">Phone</label>
+                                                <input type="tel" class="form-control" id="teacherPhone" value="+1 234 567 890">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="teacherDepartment" class="form-label">Department</label>
+                                                <input type="text" class="form-control" id="teacherDepartment" value="Computer Science">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5>Change Password</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="changePasswordForm">
+                                            <div class="mb-3">
+                                                <label for="currentPassword" class="form-label">Current Password</label>
+                                                <input type="password" class="form-control" id="currentPassword">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="newPassword" class="form-label">New Password</label>
+                                                <input type="password" class="form-control" id="newPassword">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                                <input type="password" class="form-control" id="confirmPassword">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Change Password</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toastNotification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto" id="toastTitle">Notification</strong>
+                <small>Just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-        </nav>
-     </header>
-
-     <!-- End Header Section  -->
-
-
-     <!-- Start Body Section -->
-      <section>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-12 col-md-3">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        DASHBOARD
-                                    </button>
-                                </h2>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                                    <div class="accordion-body">
-                                        COURSE CARD
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-12 col-md-3">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        ATTENDANCE
-                                    </button>
-                                </h2>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                                    <div class="accordion-body">
-                                        ATTENDANCE SHEET
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-12 col-md-3">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                       COURSE
-                                    </button>
-                                </h2>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                                    <div class="accordion-body">
-                                       COURSE DETAILS
-                                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt, neque?
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="toast-body" id="toastMessage">
+                This is a toast message.
             </div>
-      </section>
+        </div>
+    </div>
 
 
-
-         
-
-
-
-
-
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <!-- Bootstrap js -->
     <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>
